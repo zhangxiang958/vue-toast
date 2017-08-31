@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      123123
+      toast
   </div>
 </template>
 
@@ -8,10 +8,23 @@
 export default {
   name: 'app',
   mounted() { 
-      this.$Toast();
+      this.$Toast(`数据出错, 请稍候重试`);
+      setTimeout(() => {
+        this.$Toast(`数据出错, 请稍候重试`);
+      }, 2000);
+      setTimeout(() => {
+        this.$Toast(`数据出错, 请稍候重试`);
+      }, 4000);
+      this.$Toast.success();
+      // this.$Toast.loading();
+      // this.$Toast.fail();
+      setTimeout(() => {
+        // this.$Toast.Dismiss();
+      }, 4000);
   },
   data() {
     return {
+
     }
   },
   methods: {

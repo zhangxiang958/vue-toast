@@ -1,4 +1,5 @@
 import Template from './index.vue';
+import Layer    from './layer';
 
 let instance;
 let id = 0;
@@ -10,8 +11,21 @@ const globalOptions = {
     duration: 3000
 }
 
-const Toast = (message, options = {}) => {
+const moveToast = (toasts) => {
+    let length = toasts.length;
+    toasts.forEach((item, idx) => {
+        let value;
+        value = `translateY(-${(length - 1 - idx) * 100}%);`;
+        item.style['transform'] = value;
+    });
+}
 
+
+const Toast = (message, options = {}) => {
+    if(!message) {
+        console.error('[vue-toast]: message is empty, please input your message.');
+        return;
+    }
     options.cssClass && 
     (globalOptions.cssClass[options.cssClass] = true) && 
     (options.cssClass = {
@@ -39,20 +53,12 @@ const Toast = (message, options = {}) => {
     }, options.duration);
 }
 
-const moveToast = (toasts) => {
-    let length = toasts.length;
-    toasts.forEach((item, idx) => {
-        let value;
-        value = `translateY(-${(length - 1 - idx) * 100}%);`;
-        item.style['transform'] = value;
-    });
-}
-
 export default {
     install(Vue) {
         let Tpl = Vue.extend(Template);
         instance = new Tpl();
         Vue.prototype.$Toast = Toast;
+        Layer.install(Vue);
         document.body.appendChild(instance.$mount().$el);
     }
 }
