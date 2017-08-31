@@ -15,9 +15,10 @@ export default {
       setTimeout(() => {
         this.$Toast(`数据出错, 请稍候重试`);
       }, 4000);
-      this.$Toast.success();
+      // this.$Toast.success();
       // this.$Toast.loading();
       // this.$Toast.fail();
+      this.$Toast.offline();
       setTimeout(() => {
         // this.$Toast.Dismiss();
       }, 4000);

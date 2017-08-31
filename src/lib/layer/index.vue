@@ -37,6 +37,9 @@
                 v-if="type === 'fail'">
                 <div class="cross"></div>
             </div>
+            <div class="offline"
+                v-if="type === 'offline'">
+            </div>
             <div class="loading-fake"
                 v-if="type === 'loading'">
                 <div class="loadingCircle circle1"></div>
@@ -230,6 +233,57 @@
         left: 50%;
         top: 50%;
         transform: translate(-50%, -50%);
+    }
+
+    .offline {
+        display: inline-block;
+        position: relative;
+        margin: 2px;
+        height: 30px;
+        width: 30px;
+        border: 1px solid #fff;
+        border-radius: 50%;
+        direction: ltr;
+        text-align: left;
+        color: #fff;
+        font-style: normal;
+        vertical-align: middle;
+        text-indent: -9999px;
+    }
+
+    .offline:before {
+        content: '';
+        pointer-events: none;
+        border-radius: 50%;
+        box-shadow: 8px 0 0 0, 0 0 0 2px inset;
+        height: 4px;
+        width: 4px;
+        left: 7px;
+        position: absolute;
+        top: 27%;
+    }
+
+    .offline:after {
+        content: '';
+        pointer-events: none;
+        -webkit-transform: translateX(-50%) rotate(180deg);
+        -ms-transform: translateX(-50%) rotate(180deg);
+        transform: translateX(-50%) rotate(180deg);
+        -webkit-transform-origin: center 85%;
+        -ms-transform-origin: center 85%;
+        transform-origin: center 85%;
+        border-radius: 50%;
+        -webkit-transform: translateX(-50%);
+        -ms-transform: translateX(-50%);
+        transform: translateX(-50%);
+        border-top-color: transparent;
+        border-left-color: transparent;
+        border-right-color: transparent;
+        height: 16px;
+        left: 50%;
+        position: absolute;
+        top: 6%;
+        width: 16px;
     }
 
     .loading-fake {
