@@ -51,7 +51,6 @@
     }
 
     .toastShow-enter {
-        transform: translateY(100%);
         opacity: 0;
         transition: all 0.3s ease;
     }

@@ -1,21 +1,20 @@
-# vue-messageBox
+# vue-toast
 
 > this component is attend to offer a easy way to cue user with message but not by bowser's way.
 
-## Requirements
-this project is base on ECMAScript 6, so maybe you need babel.
-## Why vue-messsageBox
-Because my project need a modal which only show some simple text, and the native modal on mobile is ugly and is not a custom component.
+## Why vue-toast
+Sometime, we need to tell the user when something is broken such as notwork crash or this website is loading, so, vue-toast can offer you a easy way to 
+do this.
 ## Live Demo
 
-https://zhangxiang958.github.io/vue-messageBox/
+https://zhangxiang958.github.io/vue-toast/
 ## Installation
 ```
-npm install --save vue-messageBox-addon
+npm install --save vue-toast-addon
 
 or
 
-<script src="www.exampleCDN.com/vue-messageBox.min.js"></script>
+<script src="www.exampleCDN.com/vue-toast.min.js"></script>
 ```
 ## Usage
 ### Options of messageBox
@@ -23,97 +22,40 @@ Here list options on messageBox
 
 | Option | Description |
 | ----- | ----- |
-| closable | optional, the switch of dismiss way |
-| title | optional, Object, the setting of title |
-| message | Object, the setting of message |
-| buttons | optional, Array, the item of Array is object, the object is the setting of footer button |
-| closeBtn | optional, Object, here you can set the closeBtn's outlook |
-| msgBody | optional, Object, here you can set the message's outlook |
-| msgFooter | optional, Object, here you can set the message footer's outlook |
-```
-closable: false,  // default true, if you set false , click mask will not dismiss the dialog, you must click the closeBtn 
-title: { 
-    content: '1233333333333333333333333',  //String, title content 
-    cssClass: '',  // className of title
-    style: {}  // style of title
-},
-message: {
-    content: '<div>123</div>', //String or DOM String, message content
-    cssClass: '',  // className of message
-    style: {}  // style of message
-},
-buttons: [{
-    label: 'submit',  //text label of footer button
-    cssClass: '',  // className of the footer button
-    style: {},  // style of the footer button
-    action: function(){
-      // if wil fire when this button was clicked
-    }
-}],
-closeBtn: {
-    cssClass: '', // className of close botton
-    style: {}  // style of close button
-},
-msgBody: {
-    cssClass: '',  // className of messageBox
-    style: {}   // style of messageBox
-}
-msgFooter: {
-    cssClass: '',  // className of messageBox
-    style: {}   // style of messageBox
-}
-```
+| cssClass | optional, set className for toast |
+| style | optional, set style for toast |
+| position | Object, set the position of toast |
+| duration | optional, Number, default 3000, toast will dispear after 300ms, if you don't want toast dispear automatically please set 0 |
+| mask | optional, default false, to set mask show or not |
+| dismiss | Object, here you can set the closeBtn's outlook |
+
 
 ### MessageBox
 ```
-//main.js
-import MsgBox from 'vue-messgaeBox-freedom';
-Vue.use(MsgBox);
-
-//app.vue
-this.$Message({
-    closable: false,
-    title: {
-        content: '1233333333333333333333333'
+this.$Toast(`数据出错, 请稍候重试`, {
+    cssClass: 'test',
+    style: {
+        background: 'red'
     },
-    message: {
-        content: '<div>123</div>'
-    },
-    buttons: [{
-        label: 'submit',
-        cssClass: '',
-        style: {},
-        action: function(){
-
-        }
-    }, {
-        label: 'submit',
-        cssClass: '',
-        style: {},
-        action: () => {
-            this.$Message.dissmiss();
-        }
-    }],
-    closeBtn: {
-
-    },
-    msgBody: {
-        // cssClass: 'test'
-    }
+    duration: 4000,
+    // mask is not valid here
 });
-this.$Message.alert('message!!!', function(){
-
-});
-this.$Message.confirm('message!!!!', function(result){
-    if(result) {
-        alert('确定');
-    } else {
-        alert('取消'); 
-    }
-});
-
-// close the messageBox
-this.$Message.dissmiss();
+setTimeout(() => {
+    this.$Toast(`数据出错, 请稍候重试`);
+}, 2000);
+setTimeout(() => {
+    this.$Toast(`数据出错, 请稍候重试`);
+}, 4000);
+// this.$Toast.success();
+// this.$Toast.loading();
+// this.$Toast.fail();
+this.$Toast.offline();
+// this.$Toast.offline('network is broken', {
+//       mask: true  // mask is vaild here
+// });
+setTimeout(() => {
+    this.$Toast.Dismiss();
+}, 4000);
 ```
 
 ## Licence
@@ -129,6 +71,6 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 
 ## Concat
-Mail [958033967@qq.com](mailto 958033967@qq.com)
+Mail [958033967@qq.com]
 
 Blog zhangxiang958.github.io

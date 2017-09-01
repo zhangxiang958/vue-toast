@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-      toast
+      <button @click="toast">toast</button>
   </div>
 </template>
 
@@ -29,6 +29,9 @@ export default {
     }
   },
   methods: {
+    toast() {
+      this.$Toast(`数据出错, 请稍后重试`);
+    }
   }
 }
 </script>

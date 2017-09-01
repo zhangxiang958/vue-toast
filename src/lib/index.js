@@ -39,16 +39,22 @@ const Toast = (message, options = {}) => {
         ...options,
         onRemove: () => {
             let i = instance.$data.messages.findIndex((item) => { return item.id === options.id });
-            options.show = false;
-            instance.$data.messages.splice(i, 1);
+            i >= 0 && (options.show = false) 
+            i >= 0 && (instance.$data.messages.splice(i, 1));
         }
     };
-
     moveToast(instance.$data.messages);
     instance.$data.messages.push(options);
+    console.log(instance.$data.messages.length);
+    if(instance.$data.messages.length > 6) {
+        setTimeout(() => {
+            clearTimeout(instance.$data.messages[0].timer);
+            instance.$data.messages[0].onRemove();
+        });
+    }
     console.log(instance.$data.messages);
     
-    setTimeout(() => {
+    options.timer = setTimeout(() => {
         options.onRemove();
     }, options.duration);
 }
