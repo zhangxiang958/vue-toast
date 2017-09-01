@@ -6,10 +6,7 @@ const globalOptions = {
     show: true,
     mask: true,
     type: '',
-    cssClass: {
-        // 'is-loadingShow': true, 
-        // 'is-loadingHide': false
-    },
+    cssClass: {},
     style: {},
     duration: 3000
 }
@@ -24,7 +21,7 @@ const Layer = function(message, options = {}){
         ...globalOptions,
         ...options
     };
-    console.log(options);
+
     for(let key in options) {
         if(options.hasOwnProperty(key)) {
             instance.$data[key] = options[key];
@@ -34,7 +31,7 @@ const Layer = function(message, options = {}){
     document.body.appendChild(instance.$mount().$el);
     if(options.duration !== 0) {
         setTimeout(() => {
-
+            Dismiss();
         }, options.duration);
     }
 }
@@ -43,6 +40,7 @@ const Layer = function(message, options = {}){
 const Success = function(message = '加载成功', options = {}){
     const SuccessOptions = {
         type: 'success',
+        mask: false,
         ...options
     }
     
@@ -52,6 +50,7 @@ const Success = function(message = '加载成功', options = {}){
 const Fail = function(message = '加载失败', options = {}){
     const FailOptions = {
         type: 'fail',
+        mask: false,
         ...options
     }
 
@@ -61,6 +60,7 @@ const Fail = function(message = '加载失败', options = {}){
 const Offline = function(message = '网络连接失败', options = {}){
     const OfflineOptions = {
         type: 'offline',
+        mask: false,
         ...options
     }
 
@@ -70,6 +70,7 @@ const Offline = function(message = '网络连接失败', options = {}){
 const Loading = function(message = '加载中, 请稍候...', options = {}){
     const LoadingOptions = {
         type: 'loading',
+        mask: false,
         ...options,
         duration: 0
     }
@@ -79,8 +80,6 @@ const Loading = function(message = '加载中, 请稍候...', options = {}){
 
 const Dismiss = () => {
     instance.$data.show = false;
-    instance.$data.cssClass['is-loadingShow'] = false;
-    instance.$data.cssClass['is-loadingHide'] = true;
 }
 
 

@@ -6,10 +6,7 @@
                 mask: true,
                 type: '',
                 message: '',
-                cssClass: {
-                    // 'is-loadingShow': this.show,
-                    // 'is-loadingHide': !this.show
-                },
+                cssClass: {},
                 style: {}
             }
         },
@@ -71,8 +68,6 @@
         left: 0;
         width: 100%;
         height: 100%;
-        /*transform: translate(-50%, -50%);*/
-        /*z-index: 999;*/
     }
     .mask {
         position: absolute;
@@ -115,7 +110,6 @@
     }
 
     .layer-enter {
-        transform: translateY(100%);
         opacity: 0;
         transition: all 0.3s ease;
     }
@@ -135,65 +129,9 @@
     }
 
     .layer-leave-to {
-        transform: translateY(-100%);
         opacity: 0;
     }
 
-    /*.loadingMsg.is-loadingHide, .loadingMsg.is-loadingShow, .mask.is-loadingHide, .mask.is-loadingShow {
-        -webkit-animation-delay: 0s;
-        animation-delay: 0s;
-        -webkit-animation-duration: .4s;
-        animation-duration: .4s;
-    }
-
-    .loadingMsg.is-loadingShow, .mask.is-loadingShow {
-        -webkit-animation-name: loadingshow;
-        animation-name: loadingshow;
-        -webkit-animation-timing-function: cubic-bezier(0, .33, .2, 1);
-        animation-timing-function: cubic-bezier(0, .33, .2, 1);
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-    }
-    .loadingMsg.is-loadingHide, .mask.is-loadingHide {
-        -webkit-animation-name: loadinghide;
-        animation-name: loadinghide;
-        -webkit-animation-timing-function: cubic-bezier(0, .33, .2, 1);
-        animation-timing-function: cubic-bezier(0, .33, .2, 1);
-        -webkit-animation-fill-mode: forwards;
-        animation-fill-mode: forwards;
-    }
-    @-webkit-keyframes loadingshow {
-        0% {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-    @keyframes loadingshow {
-        0% {
-            opacity: 0;
-        }
-        to {
-            opacity: 1;
-        }
-    }
-    @-webkit-keyframes loadinghide {
-        0% {
-            opacity: 1;
-        }
-        to {
-            opacity: 0;
-        }
-    }
-    @keyframes loadinghide {
-        0% {
-            opacity: 1;
-        }
-        to {
-            opacity: 0;
-        }
-    }*/
     .success {
         margin: 15% auto;
         width: 40%;
@@ -238,52 +176,11 @@
     .offline {
         display: inline-block;
         position: relative;
-        margin: 2px;
-        height: 30px;
-        width: 30px;
-        border: 1px solid #fff;
-        border-radius: 50%;
-        direction: ltr;
-        text-align: left;
-        color: #fff;
-        font-style: normal;
-        vertical-align: middle;
-        text-indent: -9999px;
-    }
-
-    .offline:before {
-        content: '';
-        pointer-events: none;
-        border-radius: 50%;
-        box-shadow: 8px 0 0 0, 0 0 0 2px inset;
-        height: 4px;
-        width: 4px;
-        left: 7px;
-        position: absolute;
-        top: 27%;
-    }
-
-    .offline:after {
-        content: '';
-        pointer-events: none;
-        -webkit-transform: translateX(-50%) rotate(180deg);
-        -ms-transform: translateX(-50%) rotate(180deg);
-        transform: translateX(-50%) rotate(180deg);
-        -webkit-transform-origin: center 85%;
-        -ms-transform-origin: center 85%;
-        transform-origin: center 85%;
-        border-radius: 50%;
-        -webkit-transform: translateX(-50%);
-        -ms-transform: translateX(-50%);
-        transform: translateX(-50%);
-        border-top-color: transparent;
-        border-left-color: transparent;
-        border-right-color: transparent;
-        height: 16px;
-        left: 50%;
-        position: absolute;
-        top: 6%;
-        width: 16px;
+        margin: 0 auto;
+        width: 70%;
+        height: 65%;
+        background: url('./font-371.png') no-repeat;
+        background-size: 100%;
     }
 
     .loading-fake {
