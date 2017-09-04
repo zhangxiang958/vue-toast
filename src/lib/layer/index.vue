@@ -20,7 +20,6 @@
         name="layer"
     >
     <div 
-        class="loading" 
          key="layer" 
          v-if="show">
         <div class="loadingMsg" 
@@ -62,13 +61,6 @@
 </template>
 
 <style scoped>
-    .loading {
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-    }
     .mask {
         position: absolute;
         top: 0;
